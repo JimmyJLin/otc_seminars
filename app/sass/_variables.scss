@@ -1,0 +1,44 @@
+// GLOBAL COLORS
+$g_transparent_color: transparent;
+$g_black_grey_color: #444444;
+$g_yellow: #ffdf3b;
+$g_white: #ffffff;
+$g_cream_color: #fafafa;
+
+
+// mixing & @medias
+@mixin small() {
+  @media only screen and (min-width: 320px) and (max-width: 374px) {
+    @content;
+  }
+};
+
+@mixin medium() {
+  @media only screen and (min-width: 375px) and (max-width: 413px) {
+    @content;
+  }
+}
+
+@mixin large() {
+  @media only screen and (min-width: 414px) and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin ipad() {
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin ipad-pro() {
+  @media only screen and (min-width: 1024px)  and (max-width: 1366px){
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @media only screen and (min-width: 1367px){
+    @content;
+  }
+}

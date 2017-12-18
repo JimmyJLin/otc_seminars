@@ -1,0 +1,41 @@
+{
+  "name": "otc_seminars",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "8.1.1",
+    "npm": "5.0.3"
+  },
+  "scripts": {
+    "start": "gulp serve",
+    "build": "gulp css:build && gulp images:build && gulp scripts:build && gulp jquery:build",
+    "postinstall": "npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "connect": "^3.6.5",
+    "ejs": "^2.5.7",
+    "ejs-mate": "^2.3.0",
+    "express": "^4.16.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-livereload": "^3.8.1",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-rev": "^8.1.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "jquery": "^3.2.1",
+    "morgan": "^1.9.0",
+    "node-sass": "^4.7.2",
+    "nodemon": "^1.13.3",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "eslint-config-rallycoding": "^3.2.0"
+  }
+}

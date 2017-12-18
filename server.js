@@ -2,12 +2,11 @@ const express = require('express');
 const logger = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser');
+const pgp = require('pg-promise')({});
 const engine = require('ejs-mate');
 
 /* app setting */
-const port = process.env.PORT || 3000;
 const app = express();
-const server = app.listen(port);
 
 
 /* express server setting  */
@@ -20,6 +19,11 @@ app.engine('ejs', engine);
 app.set('view engine', 'ejs');
 
 /* routes */
-const mainRoutes = require('./routes/main');
+require('./routes/main')(app);
+require('./routes/dashboard')(app);
+require('./routes/students')(app);
+require('./routes/seminars')(app);
 
-app.use('/', mainRoutes);
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT);

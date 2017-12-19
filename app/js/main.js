@@ -1,28 +1,25 @@
 $(() => {
   console.log('script file loaded');
-  // JQUERY GOES HERE!!
 
-  // set active menu bar starts here
-  const url = window.location.href;
-  const nav_urls = $('.nav a');
-  $('.nav a').each(function(){
-    if (url === (this.href)) {
-      $(this).closest('li').addClass('active');
+  $('.modal').modal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: .5, // Opacity of modal background
+      inDuration: 300, // Transition in duration
+      outDuration: 200, // Transition out duration
+      startingTop: '4%', // Starting top style attribute
+      endingTop: '10%', // Ending top style attribute
     }
+  );
+
+  $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    today: 'Today',
+    clear: 'Clear',
+    close: 'Ok',
+    closeOnSelect: false // Close upon selecting a date,
   });
-  // set active menu bar ends here
 
-  // set focus when modal is opened
-  // $('#modal-content').on('shown.bs.modal', () => {
-  //     $("#txtname").focus();
-  // });
-
-  // show the modal onload
-  // const showModal = () =>{
-  //   $('#modal-content').modal({
-  //     show: true
-  //   });
-  // };
-  // setTimeout(showModal, 5000);
+   $('select').material_select();
 
 });

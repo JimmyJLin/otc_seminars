@@ -22,6 +22,7 @@ require('./routes/main')(app);
 require('./routes/dashboard')(app);
 require('./routes/students')(app);
 require('./routes/seminars')(app);
+require('./routes/hairstrokes')(app);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT);

@@ -8,6 +8,10 @@ module.exports = app => {
     res.render('pages/seminars/hairstrokes');
   });
 
+  app.get('/seminars/hybrid', (req, res) => {
+    res.render('pages/seminars/hybrid');
+  });
+
   app.get('/seminars/powdered', (req, res) => {
     res.render('pages/seminars/powdered');
   });
@@ -26,5 +30,9 @@ module.exports = app => {
 
   app.get('/seminars/hairline', (req, res) => {
     res.render('pages/seminars/hairline');
+  });
+
+  app.get('/seminars/others', (req, res) => {
+    res.render('pages/seminars/others');
   });
 };

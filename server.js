@@ -2,7 +2,6 @@ const express = require('express');
 const logger = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser');
-const pgp = require('pg-promise')({});
 const engine = require('ejs-mate');
 
 /* app setting */
@@ -23,7 +22,6 @@ require('./routes/main')(app);
 require('./routes/dashboard')(app);
 require('./routes/students')(app);
 require('./routes/seminars')(app);
-
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT);

@@ -1,3 +1,5 @@
+const db = require('../db/pgp/hairstrokes');
+
 module.exports = app => {
   /* api routes */
   app.get('/seminars', (req, res) => {
@@ -6,6 +8,8 @@ module.exports = app => {
 
   // hairstrokes
   app.get('/seminars/hairstrokes', (req, res) => {
+    console.log('db', db);
+
     res.render('pages/seminars/hairstrokes');
   });
 

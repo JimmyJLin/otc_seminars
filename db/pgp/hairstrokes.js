@@ -28,7 +28,7 @@ function allHairstrokeSeminar(req, res, next) {
 function getOneHairstrokesClass(req, res, next) {
   db.any('SELECT * FROM Class where id = $1', [req.params.id])
     .then((data) => {
-      res.rows = data;
+      res.class = data;
       console.log('data');
       next();
     })
@@ -38,7 +38,6 @@ function getOneHairstrokesClass(req, res, next) {
 }
 
 function addOneAttendee(req, res, next) {
-  console.log('req.body', req.body)
   db.none('INSERT INTO Attendees (class_id, first_name, last_name, email, phone, total, deposit, balance, full_payment) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9 )', [req.params.id, req.body.first_name, req.body.last_name, req.body.email, req.body.phone, req.body.total, req.body.deposit, req.body.balance, req.body.full_payment])
     .then((data) => {
       console.log('New Attendee added', data);
@@ -49,6 +48,19 @@ function addOneAttendee(req, res, next) {
     });
 }
 
+function getClassAttendees(req, res, next) {
+  db.any('SELECT * FROM Attendees where class_id = $1', [req.params.id])
+    .then((data) => {
+      res.attendee = data;
+      console.log('data');
+      next();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+module.exports.getClassAttendees = getClassAttendees;
 module.exports.addOneAttendee = addOneAttendee;
 module.exports.getOneHairstrokesClass = getOneHairstrokesClass;
 module.exports.getAllHairstrokeSeminar = getAllHairstrokeSeminar;

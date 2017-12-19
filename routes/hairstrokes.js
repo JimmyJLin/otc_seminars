@@ -13,9 +13,10 @@ module.exports = app => {
     res.redirect('/seminars/hairstrokes');
   });
 
-  app.get('/seminars/hairstrokes/class/:id', db.getOneHairstrokesClass, (req, res) => {
-    const data = res.rows
-    res.render('pages/seminars/hairstrokes/class', { data });
+  app.get('/seminars/hairstrokes/class/:id', db.getOneHairstrokesClass, db.getClassAttendees, (req, res) => {
+    const classData = res.class;
+    const attendeeData = res.attendee;
+    res.render('pages/seminars/hairstrokes/class', { classData, attendeeData });
   });
 
   app.post('/seminars/hairstrokes/class/:id', db.addOneAttendee, (req, res) => {

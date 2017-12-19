@@ -81,7 +81,7 @@
   <!-- partials -->
   <h2>Basic Hair Strokes Class</h2>
 
-  <% data.forEach((el) => { %>
+  <% classData.forEach((el) => { %>
     <div class="row">
       <div class="col s6">
         <label for="">Seminar Type</label>
@@ -114,6 +114,7 @@
   <% }) %>
 
 
+
   <h4 class="center">Seminar Attendees</h4>
   <table class="highlight">
     <thead>
@@ -127,42 +128,22 @@
           <th>Full Payment</th>
       </tr>
     </thead>
-
-    <tbody>
-      <td>Jimmy Lin</td>
-      <td>usmcjimmy@gmail.com</td>
-      <td>347-439-2567</td>
-      <td>$1400</td>
-      <td>$200</td>
-      <td>$1200</td>
-      <td>NO</td>
-    </tbody>
-
-    <!-- <% data.forEach((el) => { %>
+    <% attendeeData.forEach((el) => { %>
       <tbody>
-          <td><%= el.class_type %></td>
-          <td><%= el.class_date %></td>
+        <td><%= el.first_name %> <%= el.last_name  %></td>
+        <td><%= el.email %></td>
+        <td><%= el.phone %></td>
+        <td>$ <%= el.total %></td>
+        <td>$ <%= el.deposit %></td>
+        <td>$ <%= el.balance %></td>
 
-          <% if (el.class_attendee === null) { %>
-            <td> 0 / 10</td>
-          <% } else { %>
-            <td><%= el.class_attendee %> / 10</td>
-          <% } %>
-
-          <% if (el.class_completed === false || el.class_completed === null) { %>
-            <td> NO </td>
-          <% } else { %>
-            <td> YES </td>
-          <% } %>
-
-            <td>
-              <a href='/seminars/hairstrokes/class/<%= el.class_id %>' name='<%= el.class_id %>'>
-              Detail Info
-            </a>
-            </td>
-
+        <% if (el.full_payment === false || el.full_payment === null) { %>
+          <td> NO </td>
+        <% } else { %>
+          <td> YES </td>
+        <% } %>
       </tbody>
-    <% }) %> -->
+    <% }) %>
 
   </table>
 

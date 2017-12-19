@@ -7,5 +7,3 @@ const connection = keys.DATABASE_URL;
 const db = pgp(connection);
 
 module.exports = db;
-
-console.log('db', db);

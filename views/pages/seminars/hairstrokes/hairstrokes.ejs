@@ -46,6 +46,7 @@
     </div>
 
   </div>
+  <!-- Modal Structure Ends -->
 
   <!-- partials -->
   <h2>Hair Stroke Seminars</h2>
@@ -57,35 +58,35 @@
           <th>Date</th>
           <th>Attendees</th>
           <th>Completed</th>
+          <th>Details</th>
       </tr>
     </thead>
 
-    <tbody>
-      <tr>
-        <td>Handcraft</td>
-        <td>Jan 11-15</td>
-        <td>2 / 10</td>
-        <td>YES</td>
-      </tr>
-      <tr>
-        <td>Handcraft</td>
-        <td>Jan 8-12</td>
-        <td>5 / 10</td>
-        <td>NO</td>
-      </tr>
-      <tr>
-        <td>Machine</td>
-        <td>Jan 22-26</td>
-        <td>2 / 10</td>
-        <td>NO</td>
-      </tr>
-      <tr>
-        <td>Handcraft</td>
-        <td>Feb 5-9</td>
-        <td>2 / 10</td>
-        <td>NO</td>
-      </tr>
-    </tbody>
+    <% data.forEach((el) => { %>
+      <tbody>
+          <td><%= el.class_type %></td>
+          <td><%= el.class_date %></td>
+
+          <% if (el.class_attendee === null) { %>
+            <td> 0 / 10</td>
+          <% } else { %>
+            <td><%= el.class_attendee %> / 10</td>
+          <% } %>
+
+          <% if (el.class_completed === false || el.class_completed === null) { %>
+            <td> NO </td>
+          <% } else { %>
+            <td> YES </td>
+          <% } %>
+
+            <td>
+              <a href='/seminars/hairstrokes/class/<%= el.class_id %>' name='<%= el.class_id %>'>
+              Detail Info
+            </a>
+            </td>
+
+      </tbody>
+    <% }) %>
   </table>
 
 </div>

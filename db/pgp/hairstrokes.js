@@ -60,6 +60,32 @@ function getClassAttendees(req, res, next) {
     });
 }
 
+function deleteRecord(req, res, next) {
+  console.log('data from deleteRecord', req.body.student_email);
+  db.any('DELETE FROM Attendees where email = $1', [req.body.student_email])
+    .then((data) => {
+      console.log('deleted attendee', data);
+      next();
+    })
+    .catch((error) => {
+      console.error('error deleting attendee', error);
+    });
+}
+
+function getClassAttendeesByEmail(req, res, next) {
+  db.any('SELECT * FROM Attendees where email = $1', [req.params.id])
+    .then((data) => {
+      res.attendeeByEmail = data;
+      // console.log('data');
+      next();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+module.exports.getClassAttendeesByEmail = getClassAttendeesByEmail;
+module.exports.deleteRecord = deleteRecord;
 module.exports.getClassAttendees = getClassAttendees;
 module.exports.addOneAttendee = addOneAttendee;
 module.exports.getOneHairstrokesClass = getOneHairstrokesClass;

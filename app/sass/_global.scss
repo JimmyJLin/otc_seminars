@@ -4,3 +4,25 @@
 body {
 
 }
+
+#hidden_input{
+  border-bottom: none;
+  height: 0;
+  width: 0;
+  margin: 0;
+}
+
+#action_buttons{
+  display: inline-flex;
+  form{
+    padding-right: 10px;
+  }
+}
+
+#update_form{
+  margin-top: 10%;
+  h5{
+    text-align: center;
+    padding-bottom: 50px;
+  }
+}

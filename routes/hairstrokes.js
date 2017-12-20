@@ -25,4 +25,14 @@ module.exports = app => {
     res.redirect('/seminars/hairstrokes/class/' + id);
   });
 
+  app.post('/seminars/hairstrokes/class/attendees/delete', db.deleteRecord, (req, res) => {
+    res.redirect('back');
+  });
+
+  app.get('/seminars/hairstrokes/class/attendees/update/:id', db.getClassAttendeesByEmail, (req, res) => {
+    const attendeeDataByEmail = res.attendeeByEmail;
+    res.render('pages/seminars/update', { attendeeDataByEmail });
+    // res.redirect('back');
+  });
+
 };

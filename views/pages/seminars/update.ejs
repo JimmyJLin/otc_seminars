@@ -1,0 +1,72 @@
+<% layout('main') -%>
+
+<div id="seminars">
+
+  <!-- partials -->
+
+  <div id="update_form" class="row container">
+    <h5>Update Seminar Attendee Record</h5>
+    <form method="post" action="/seminars/hairstrokes/class/attendees/update" class="col s12">
+
+      <% attendeeDataByEmail.forEach((el) => { %>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="first_name" type="text" class="validate" name="first_name" value='<%= el.first_name %>'>
+            <label for="first_name">First Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="last_name" type="text" class="validate" name="last_name" value='<%= el.last_name %>'>
+            <label for="last_name">Last Name</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="email" type="email" class="validate" name="email" value='<%= el.email %>'>
+            <label for="email">Email</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="phone" type="text" class="validate" name="phone" value='<%= el.phone %>'>
+            <label for="phone">phone</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="total" type="number" class="validate" name="total" value='<%= el.total %>'>
+            <label for="total">Seminar Fee</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="deposit" type="number" class="validate" name="deposit"  value='<%= el.deposit %>'>
+            <label for="deposit">Deposit</label>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="balance" type="number" class="validate" name="balance" value='<%= el.balance %>'>
+            <label for="balance">Balance</label>
+          </div>
+          <div class="input-field col s6">
+            <select name="full_payment">
+              <option value="" disabled selected>Choose your option</option>
+              <option value="t">
+                YES</option>
+                <option value="f">NO</option>
+              </select>
+              <label>Full Payment</label>
+            </div>
+          </div>
+
+      <% }) %>
+
+
+
+      <button class="btn waves-effect waves-light modal-close right" type="submit">Update
+        <i class="material-icons right">send</i>
+      </button>
+
+    </form>
+  </div>
+
+</div>

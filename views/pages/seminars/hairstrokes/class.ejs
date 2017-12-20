@@ -99,7 +99,7 @@
         <% if (el.class_attendee === null) { %>
           <p> 0 / 10</p>
         <% } else { %>
-          <p><%= el.class_attendee %> / 10</p>
+          <p><%= attendeeData.length %> / 10</p>
         <% } %>
       </div>
       <div class="col s6">
@@ -116,6 +116,7 @@
 
 
   <h4 class="center">Seminar Attendees</h4>
+
   <table class="highlight">
     <thead>
       <tr>
@@ -126,6 +127,7 @@
           <th>Deposit</th>
           <th>Remainer</th>
           <th>Full Payment</th>
+          <th>Actions</th>
       </tr>
     </thead>
     <% attendeeData.forEach((el) => { %>
@@ -142,6 +144,21 @@
         <% } else { %>
           <td> YES </td>
         <% } %>
+        <td>
+          <div id="action_buttons" class="row">
+
+            <form action="/seminars/hairstrokes/class/attendees/delete" method="post">
+              <input type="hidden" value='<%= el.email %>' name="student_email">
+              <button class="waves-effect btn waves-light red" type="submit"><i class="material-icons center">delete</i></button>
+            </form>
+
+            <a class="waves-effect btn waves-light" href='/seminars/hairstrokes/class/attendees/update/<%= el.email %>'><i class="material-icons center">update</i></a>
+            <!-- <form action="/seminars/hairstrokes/class/attendees/update" method="get"> -->
+            <!-- </form> -->
+
+
+          </div>
+        </td>
       </tbody>
     <% }) %>
 

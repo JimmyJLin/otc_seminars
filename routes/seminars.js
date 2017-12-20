@@ -2,9 +2,9 @@ const db = require('../db/pgp/seminar');
 
 module.exports = app => {
   /* api routes */
-  app.get('/seminars', (req, res) => {
-    res.render('pages/seminars/seminars');
-  });
+  // app.get('/seminars', (req, res) => {
+  //   res.render('pages/seminars/seminars');
+  // });
 
   app.get('/seminars/attendees/update/:id', db.getClassAttendeesByEmail, (req, res) => {
     const attendeeDataByEmail = res.attendeeByEmail;

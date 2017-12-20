@@ -1,100 +1,15 @@
 <% layout('main') -%>
-<nav id="breadcrumb">
-  <div class="nav-wrapper container">
-    <div class="col s12">
-      <a href="/dashboard" class="breadcrumb">Dashboard</a>
-    </div>
-  </div>
-</nav>
+
+<%- include ../../../partials/seminars/hairstrokes/breadcrumbs %>
 
 <div id="seminars" class="container">
 
-  <!-- Modal Trigger -->
-  <div class="fixed-action-btn horizontal">
-    <a class="btn-floating btn-large red modal-trigger" href="#modal1">
-      <i class="large material-icons">add</i>
-    </a>
-  </div>
-
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal modal-fixed-footer">
-    <div class="modal-content">
-      <h4>Add New Seminar</h4>
-
-      <div class="row">
-        <form method="post" class="col s12">
-          <div class="row">
-            <div class="input-field col s12">
-              <select name="seminar">
-                <option value="" disabled selected>Choose your option</option>
-                <option value="handcraft_3days">Handcraft 3 Days Seminar</option>
-                <option value="handcraft_5days">Handcraft 5 Days Seminar</option>
-                <option value="machine_3days">Machine 3 Days Seminar</option>
-                <option value="machine_5days">Machine 5 Days Seminar</option>
-              </select>
-              <label>Seminar Type</label>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s12">
-              <input name="date" type="text" class="datepicker">
-              <label for="date">Date</label>
-            </div>
-          </div>
-
-          <button class="btn waves-effect waves-light modal-close right" type="submit">Submit
-            <i class="material-icons right">send</i>
-          </button>
-
-        </form>
-      </div>
-
-    </div>
-
-  </div>
-  <!-- Modal Structure Ends -->
-
   <!-- partials -->
+  <%- include ../../../partials/seminars/hairstrokes/modal %>
 
   <h2>Hair Stroke Seminars</h2>
 
-  <table class="highlight">
-    <thead>
-      <tr>
-          <th>Type</th>
-          <th>Date</th>
-          <!-- <th>Attendees</th> -->
-          <!-- <th>Completed</th> -->
-          <th>Details</th>
-      </tr>
-    </thead>
+  <%- include ../../../partials/seminars/hairstrokes/table %>
 
-    <% data.forEach((el) => { %>
-      <tbody>
-          <td><%= el.class_type %></td>
-          <td><%= el.class_date %></td>
-<!--
-          <% if (el.class_attendee === null) { %>
-            <td> 0 / 10</td>
-          <% } else { %>
-            <td><%= el.class_attendee %> / 10</td>
-          <% } %> -->
-
-          <!-- <% if (el.class_completed === false || el.class_completed === null) { %>
-            <td> NO </td>
-          <% } else { %>
-            <td> YES </td>
-          <% } %> -->
-
-            <td>
-              <a href='/seminars/hairstrokes/class/<%= el.id %>' name='<%= el.id %>'>
-              Detail Info
-            </a>
-            </td>
-
-      </tbody>
-    <% }) %>
-  </table>
 
 </div>

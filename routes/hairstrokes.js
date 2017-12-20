@@ -5,7 +5,7 @@ module.exports = app => {
   // hairstrokes
   app.get('/seminars/hairstrokes', db.getAllHairstrokeSeminar, (req, res) => {
     const data = res.rows
-    console.log('data ', data.class);
+    // console.log('data ', data.class);
     res.render('pages/seminars/hairstrokes/hairstrokes', { data });
   });
 
@@ -20,9 +20,9 @@ module.exports = app => {
   });
 
   app.post('/seminars/hairstrokes/class/:id', db.addOneAttendee, (req, res) => {
-    console.log('req.body', req.body);
-    res.status(200);
-    // res.redirect('/seminars/hairstrokes/class/:id');
+    const id = req.params.id;
+    // console.log('req.body', req.body);
+    res.redirect('/seminars/hairstrokes/class/' + id);
   });
 
 };

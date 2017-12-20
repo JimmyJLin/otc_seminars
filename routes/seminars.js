@@ -1,11 +1,24 @@
-const db = require('../db/pgp/hairstrokes');
+const db = require('../db/pgp/seminar');
 
 module.exports = app => {
   /* api routes */
   app.get('/seminars', (req, res) => {
     res.render('pages/seminars/seminars');
   });
-  
+
+  app.get('/seminars/attendees/update/:id', db.getClassAttendeesByEmail, (req, res) => {
+    const attendeeDataByEmail = res.attendeeByEmail;
+    res.render('pages/seminars/update', { attendeeDataByEmail });
+    // res.redirect('back');
+  });
+
+  app.post('/seminars/attendees/update/:id', db.updateClassAttendeesByEmail, (req, res) => {
+    console.log('classId', res.classId.class_id);
+    // const id = req.params.id;
+    // console.log('id', id);
+    res.redirect(`/seminars/hairstrokes/class/` + res.classId.class_id);
+  });
+
 
   // hybrid
   app.get('/seminars/hybrid', (req, res) => {

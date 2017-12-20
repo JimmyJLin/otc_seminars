@@ -6,9 +6,9 @@
 
   <div id="update_form" class="row container">
     <h5>Update Seminar Attendee Record</h5>
-    <form method="post" action="/seminars/hairstrokes/class/attendees/update" class="col s12">
+    <% attendeeDataByEmail.forEach((el) => { %>
+    <form method="post" action='/seminars/attendees/update/<%= el.email %>' class="col s12">
 
-      <% attendeeDataByEmail.forEach((el) => { %>
         <div class="row">
           <div class="input-field col s6">
             <input id="first_name" type="text" class="validate" name="first_name" value='<%= el.first_name %>'>
@@ -41,7 +41,7 @@
             <label for="deposit">Deposit</label>
           </div>
         </div>
-        
+
         <div class="row">
           <div class="input-field col s6">
             <input id="balance" type="number" class="validate" name="balance" value='<%= el.balance %>'>
@@ -58,7 +58,6 @@
             </div>
           </div>
 
-      <% }) %>
 
 
 
@@ -67,6 +66,7 @@
       </button>
 
     </form>
+    <% }) %>
   </div>
 
 </div>

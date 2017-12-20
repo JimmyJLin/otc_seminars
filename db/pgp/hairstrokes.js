@@ -72,19 +72,6 @@ function deleteRecord(req, res, next) {
     });
 }
 
-function getClassAttendeesByEmail(req, res, next) {
-  db.any('SELECT * FROM Attendees where email = $1', [req.params.id])
-    .then((data) => {
-      res.attendeeByEmail = data;
-      // console.log('data');
-      next();
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
-
-module.exports.getClassAttendeesByEmail = getClassAttendeesByEmail;
 module.exports.deleteRecord = deleteRecord;
 module.exports.getClassAttendees = getClassAttendees;
 module.exports.addOneAttendee = addOneAttendee;

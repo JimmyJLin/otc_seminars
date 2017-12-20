@@ -29,10 +29,4 @@ module.exports = app => {
     res.redirect('back');
   });
 
-  app.get('/seminars/hairstrokes/class/attendees/update/:id', db.getClassAttendeesByEmail, (req, res) => {
-    const attendeeDataByEmail = res.attendeeByEmail;
-    res.render('pages/seminars/update', { attendeeDataByEmail });
-    // res.redirect('back');
-  });
-
 };

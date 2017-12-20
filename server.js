@@ -20,7 +20,6 @@ app.set('view engine', 'ejs');
 /* routes */
 require('./routes/main')(app);
 require('./routes/dashboard')(app);
-require('./routes/students')(app);
 require('./routes/seminars')(app);
 require('./routes/hairstrokes')(app);
 

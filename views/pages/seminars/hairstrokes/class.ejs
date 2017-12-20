@@ -1,175 +1,17 @@
 <% layout('main') -%>
+<%- include ../../../partials/seminars/class/breadcrumbs %>
 
-<nav id="breadcrumb">
-  <div class="nav-wrapper container">
-    <div class="col s12">
-      <a href="/dashboard" class="breadcrumb">Dashboard</a>
-      <a href="/hairstrokes" class="breadcrumb">Hairstrokes</a>
-    </div>
-  </div>
-</nav>
 <div id="seminars" class="container">
 
-  <!-- Modal Trigger -->
-  <div class="fixed-action-btn horizontal">
-    <a class="btn-floating btn-large red modal-trigger" href="#modal1">
-      <i class="large material-icons">add</i>
-    </a>
-  </div>
+  <%- include ../../../partials/seminars/class/modal %>
 
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal modal-fixed-footer">
-    <div class="modal-content">
-      <h4>Add New Attendees</h4>
-
-      <div class="row">
-        <form method="post" class="col s12">
-
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="first_name" type="text" class="validate" name="first_name">
-              <label for="first_name">First Name</label>
-            </div>
-            <div class="input-field col s6">
-              <input id="last_name" type="text" class="validate" name="last_name">
-              <label for="last_name">Last Name</label>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="email" type="email" class="validate" name="email">
-              <label for="email">Email</label>
-            </div>
-            <div class="input-field col s6">
-              <input id="phone" type="text" class="validate" name="phone">
-              <label for="phone">phone</label>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="total" type="number" class="validate" name="total">
-              <label for="total">Seminar Fee</label>
-            </div>
-            <div class="input-field col s6">
-              <input id="deposit" type="number" class="validate" name="deposit">
-              <label for="deposit">Deposit</label>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="balance" type="number" class="validate" name="balance">
-              <label for="balance">Balance</label>
-            </div>
-            <div class="input-field col s6">
-              <select name="full_payment">
-                <option value="" disabled selected>Choose your option</option>
-                <option value="t">
-                YES</option>
-                <option value="f">NO</option>
-              </select>
-              <label>Full Payment</label>
-            </div>
-          </div>
-
-          <button class="btn waves-effect waves-light modal-close right" type="submit">Submit
-            <i class="material-icons right">send</i>
-          </button>
-
-        </form>
-      </div>
-
-    </div>
-
-  </div>
-  <!-- Modal Structure Ends -->
-
-  <!-- partials -->
   <h2>Basic Hair Strokes Class</h2>
 
-  <% classData.forEach((el) => { %>
-    <div class="row">
-      <div class="col s6">
-        <label for="">Seminar Type</label>
-        <h5><%= el.class_type %></h5>
-      </div>
-      <div class="col s6">
-        <label for="">Seminar Date</label>
-        <h5><%= el.class_date %></h5>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col s6">
-        <label for=""># of Attendees</label>
-        <% if (el.class_attendee === null) { %>
-          <p> 0 / 10</p>
-        <% } else { %>
-          <p><%= attendeeData.length %> / 10</p>
-        <% } %>
-      </div>
-      <!-- <div class="col s6">
-        <label for="">Completed</label>
-        <% if (el.class_completed === false || el.class_completed === null) { %>
-          <p> NO </p>
-        <% } else { %>
-          <p> YES </p>
-        <% } %>
-      </div> -->
-    </div>
-  <% }) %>
-
-
+  <%- include ../../../partials/seminars/class/classInfo %>
 
   <h4 class="center">Seminar Attendees</h4>
 
-  <table class="highlight">
-    <thead>
-      <tr>
-          <th>Full Name</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Total</th>
-          <th>Deposit</th>
-          <th>Remainer</th>
-          <th>Full Payment</th>
-          <th>Actions</th>
-      </tr>
-    </thead>
-    <% attendeeData.forEach((el) => { %>
-      <tbody>
-        <td><%= el.first_name %> <%= el.last_name  %></td>
-        <td><%= el.email %></td>
-        <td><%= el.phone %></td>
-        <td>$ <%= el.total %></td>
-        <td>$ <%= el.deposit %></td>
-        <td>$ <%= el.balance %></td>
+  <%- include ../../../partials/seminars/class/attendeeInfo %>
 
-        <% if (el.full_payment === false || el.full_payment === null) { %>
-          <td> NO </td>
-        <% } else { %>
-          <td> YES </td>
-        <% } %>
-        <td>
-          <div id="action_buttons" class="row">
-
-            <form action="/seminars/hairstrokes/class/attendees/delete" method="post">
-              <input type="hidden" value='<%= el.email %>' name="student_email">
-              <button class="waves-effect btn waves-light red" type="submit"><i class="material-icons center">delete</i></button>
-            </form>
-
-            <a class="waves-effect btn waves-light" href='/seminars/attendees/update/<%= el.email %>'><i class="material-icons center">update</i></a>
-            <!-- <form action="/seminars/hairstrokes/class/attendees/update" method="get"> -->
-            <!-- </form> -->
-
-
-          </div>
-        </td>
-      </tbody>
-    <% }) %>
-
-  </table>
 
 </div>

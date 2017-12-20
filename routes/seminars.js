@@ -16,7 +16,7 @@ module.exports = app => {
     console.log('classId', res.classId.class_id);
     // const id = req.params.id;
     // console.log('id', id);
-    res.redirect(`/seminars/hairstrokes/class/` + res.classId.class_id);
+    res.redirect(`/seminars/class/` + res.classId.class_id);
   });
 
 

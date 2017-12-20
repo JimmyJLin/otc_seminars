@@ -14,19 +14,19 @@ module.exports = app => {
     res.redirect('/seminars/hairstrokes');
   });
 
-  app.get('/seminars/hairstrokes/class/:id', seminarDb.getOneClass, seminarDb.getClassAttendees, (req, res) => {
+  app.get('/seminars/class/:id', seminarDb.getOneClass, seminarDb.getClassAttendees, (req, res) => {
     const classData = res.class;
     const attendeeData = res.attendee;
     res.render('pages/seminars/hairstrokes/class', { classData, attendeeData });
   });
 
-  app.post('/seminars/hairstrokes/class/:id', seminarDb.addOneAttendee, (req, res) => {
+  app.post('/seminars/class/:id', seminarDb.addOneAttendee, (req, res) => {
     const id = req.params.id;
     // console.log('req.body', req.body);
     res.redirect('/seminars/hairstrokes/class/' + id);
   });
 
-  app.post('/seminars/hairstrokes/class/attendees/delete', seminarDb.deleteRecord, (req, res) => {
+  app.post('/seminars/class/attendees/delete', seminarDb.deleteRecord, (req, res) => {
     res.redirect('back');
   });
 

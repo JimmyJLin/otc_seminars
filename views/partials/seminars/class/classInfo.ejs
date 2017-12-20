@@ -1,0 +1,32 @@
+
+  <% classData.forEach((el) => { %>
+    <div class="row">
+      <div class="col s6">
+        <label for="">Seminar Type</label>
+        <h5><%= el.class_type %></h5>
+      </div>
+      <div class="col s6">
+        <label for="">Seminar Date</label>
+        <h5><%= el.class_date %></h5>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s6">
+        <label for=""># of Attendees</label>
+        <% if (el.class_attendee === null) { %>
+          <p> 0 / 10</p>
+        <% } else { %>
+          <p><%= attendeeData.length %> / 10</p>
+        <% } %>
+      </div>
+      <!-- <div class="col s6">
+        <label for="">Completed</label>
+        <% if (el.class_completed === false || el.class_completed === null) { %>
+          <p> NO </p>
+        <% } else { %>
+          <p> YES </p>
+        <% } %>
+      </div> -->
+    </div>
+  <% }) %>

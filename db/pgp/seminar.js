@@ -1,5 +1,6 @@
 const db = require('./pgp');
 
+// GET ONE Class info based on class id
 function getOneClass(req, res, next) {
   db.any('SELECT * FROM Class where id = $1', [req.params.id])
     .then((data) => {
@@ -12,6 +13,7 @@ function getOneClass(req, res, next) {
     });
 }
 
+// ADD ONE Attendee to class
 function addOneAttendee(req, res, next) {
   db.none('INSERT INTO Attendees (class_id, first_name, last_name, email, phone, total, deposit, balance, full_payment) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9 )', [req.params.id, req.body.first_name, req.body.last_name, req.body.email, req.body.phone, req.body.total, req.body.deposit, req.body.balance, req.body.full_payment])
     .then((data) => {
@@ -23,6 +25,7 @@ function addOneAttendee(req, res, next) {
     });
 }
 
+// GET ALL attendees based on class id
 function getClassAttendees(req, res, next) {
   db.any('SELECT * FROM Attendees where class_id = $1', [req.params.id])
     .then((data) => {
@@ -35,6 +38,7 @@ function getClassAttendees(req, res, next) {
     });
 }
 
+// Delete ONE attendee from class
 function deleteRecord(req, res, next) {
   console.log('data from deleteRecord', req.body.student_email);
   db.any('DELETE FROM Attendees where email = $1', [req.body.student_email])
@@ -47,6 +51,7 @@ function deleteRecord(req, res, next) {
     });
 }
 
+// GET ONE attendee info based on email
 function getClassAttendeesByEmail(req, res, next) {
   db.any('SELECT * FROM Attendees WHERE email = $1', [req.params.id])
     .then((data) => {
@@ -59,8 +64,8 @@ function getClassAttendeesByEmail(req, res, next) {
     });
 }
 
+// UPDATE ONE attendee based on email and return class_id
 function updateClassAttendeesByEmail(req, res, next) {
-
   db.any('UPDATE Attendees SET (first_name, last_name, email, phone, total, deposit, balance, full_payment) = ($1, $2, $3, $4, $5, $6, $7, $8) WHERE email = $9 RETURNING class_id', [req.body.first_name, req.body.last_name, req.body.email, req.body.phone, req.body.total, req.body.deposit, req.body.balance, req.body.full_payment, req.body.email])
   .then((data) => {
     res.classId = data[0]

@@ -1,5 +1,6 @@
 const db = require('./pgp');
 
+// GET ALL Hairstroke seminars
 function getAllHairstrokeSeminar(req, res, next) {
   const category = 'hairstrokes'
   db.any('SELECT * FROM Class WHERE class_category = $1', [category])
@@ -13,6 +14,7 @@ function getAllHairstrokeSeminar(req, res, next) {
     });
 }
 
+// ADD ONE Hairstroke seminar.
 function allHairstrokeSeminar(req, res, next) {
   const category = 'hairstrokes'
   db.none('INSERT INTO Class (class_category, class_type, class_date, class_attendee, class_completed) VALUES ($1, $2, $3, $4, $5);', [category, req.body.seminar, req.body.date, 0, false])

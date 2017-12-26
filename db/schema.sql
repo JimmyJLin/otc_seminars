@@ -29,7 +29,7 @@ CREATE TABLE Attendees (
   discount VARCHAR(500),
   balance VARCHAR(500),
   referral VARCHAR(500),
-  full_payment BOOLEAN,
+  payment VARCHAR(500),
   notes VARCHAR(5000)
 );
 

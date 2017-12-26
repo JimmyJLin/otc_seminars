@@ -51,7 +51,7 @@
 
   <div class="container">
     <h4 class="center">Seminar History</h4>
-    
+
     <table class="highlight responsive-table">
       <thead>
         <tr>
@@ -59,6 +59,7 @@
             <th>Name</th>
             <th>Date</th>
             <th>Fee</th>
+            <th>Actions</th>
         </tr>
       </thead>
       <% if(studentHistory === undefined || studentHistory.length > 0) { %>
@@ -68,6 +69,9 @@
             <td><%= el.class_type %></td>
             <td><%= el.class_date %></td>
             <td>$ <%= el.total %></td>
+            <td>
+              <a class="waves-effect btn waves-light" href='/seminars/class/<%= el.class_id %>'><i class="material-icons center">folder</i></a>
+            </td>
           </tbody>
         <% }) %>
       <% } else { %>

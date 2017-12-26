@@ -19,7 +19,7 @@
           <th>Name</th>
           <th>Email</th>
           <th>Phone</th>
-          <th>Details</th>
+          <th>Actions</th>
       </tr>
     </thead>
 
@@ -36,9 +36,7 @@
           <td><%= el.email %></td>
           <td><%= el.phone %></td>
           <td>
-            <a href='/students/<%= el.phone %>' name='<%= el.email %>'>
-              Detail Info
-            </a>
+            <a class="waves-effect btn waves-light" href='/students/<%= el.phone %>'><i class="material-icons center">account_box</i></a>
           </td>
         </tbody>
         <% }) %>

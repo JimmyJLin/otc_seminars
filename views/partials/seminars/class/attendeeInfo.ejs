@@ -6,8 +6,8 @@
         <th>Phone</th>
         <th>Total</th>
         <th>Deposit</th>
-        <th>Remainer</th>
-        <th>Full Payment</th>
+        <th>Discount</th>
+        <th>Balance</th>
         <th>Actions</th>
     </tr>
   </thead>
@@ -18,13 +18,14 @@
       <td><%= el.phone %></td>
       <td>$ <%= el.total %></td>
       <td>$ <%= el.deposit %></td>
-      <td>$ <%= el.balance %></td>
+      <td>$ <%= el.discount %></td>
+      <td>$ <%= el.total - el.deposit - el.discount %></td>
 
-      <% if (el.full_payment === false || el.full_payment === null) { %>
+      <!-- <% if (el.full_payment === false || el.full_payment === null) { %>
         <td> NO </td>
       <% } else { %>
         <td> YES </td>
-      <% } %>
+      <% } %> -->
       <td>
         <div id="action_buttons" class="row">
 
@@ -34,8 +35,6 @@
           </form>
 
           <a class="waves-effect btn waves-light" href='/seminars/attendees/update/<%= el.phone %>'><i class="material-icons center">update</i></a>
-          <!-- <form action="/seminars/hairstrokes/class/attendees/update" method="get"> -->
-          <!-- </form> -->
 
 
         </div>

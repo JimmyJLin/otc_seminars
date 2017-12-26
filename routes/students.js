@@ -12,7 +12,7 @@ module.exports = app => {
   app.get('/students/:id', studentDb.getOneStudent, studentDb.getStudentHistory, (req, res) => {
     const profileData = res.profileData;
     const studentHistory = res.studentHistory;
-    console.log('studentHistory', studentHistory);
+    // console.log('studentHistory', studentHistory);
     res.render('pages/students/profile', { profileData, studentHistory });
   });
 };

@@ -46,7 +46,7 @@ function addOneAttendee(req, res, next) {
       // console.log('returning email', data[0]);
       db.any('INSERT INTO Students (first_name, last_name, email, phone) SELECT $1, $2, $3, $4 WHERE NOT EXISTS (SELECT 1 FROM Students WHERE email = $3)', [req.body.first_name, req.body.last_name, req.body.email, req.body.phone])
         .then((data) => {
-          console.log('added new studdent')
+          // console.log('added new studdent')
         })
         .catch((error) => {
           console.error('error adding new Students', error);
@@ -76,7 +76,7 @@ function deleteRecord(req, res, next) {
   // console.log('data from deleteRecord', req.body.student_email);
   db.any('DELETE FROM Attendees where phone = $1', [req.body.phone])
     .then((data) => {
-      console.log('deleted attendee', data);
+      // console.log('deleted attendee', data);
       next();
     })
     .catch((error) => {
@@ -102,7 +102,7 @@ function updateClassAttendeesByEmail(req, res, next) {
   db.any('UPDATE Attendees SET (first_name, last_name, email, phone, total, deposit, balance, full_payment) = ($1, $2, $3, $4, $5, $6, $7, $8) WHERE phone = $4 RETURNING class_id', [req.body.first_name, req.body.last_name, req.body.email, req.body.phone, req.body.total, req.body.deposit, req.body.balance, req.body.full_payment, req.body.email])
   .then((data) => {
     res.classId = data[0]
-    console.log(' Attendee Updated', data);
+    // console.log(' Attendee Updated', data);
     next();
   })
   .catch((error) => {

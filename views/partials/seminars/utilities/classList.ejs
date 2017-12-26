@@ -19,9 +19,7 @@
         <td><%= el.class_type %></td>
         <td><%= el.class_date %></td>
         <td>
-          <a href='/seminars/class/<%= el.id %>' name='<%= el.id %>'>
-            Detail Info
-          </a>
+          <a class="waves-effect btn waves-light" href='/seminars/class/<%= el.id %>'><i class="material-icons center">dashboard</i></a>
         </td>
       </tbody>
       <% }) %>

@@ -31,7 +31,7 @@ function updateOneStudent(req, res, next) {
   db.any('UPDATE Students SET (first_name, last_name, email, phone) = ($1, $2, $3, $4) WHERE phone = $4 RETURNING email', [req.body.first_name, req.body.last_name, req.body.email, req.body.phone])
   .then((data) => {
     res.studentId = data[0]
-    console.log(' Student Updated', data);
+    // console.log(' Student Updated', data);
     next();
   })
   .catch((error) => {
@@ -43,6 +43,7 @@ function updateOneStudent(req, res, next) {
 function getStudentHistory(req, res, next) {
   db.any('SELECT * FROM class, attendees WHERE class.id = attendees.class_id AND phone = $1;', [req.params.id])
     .then((data) => {
+      // console.log('data', data);
       res.studentHistory = data;
       next();
     })

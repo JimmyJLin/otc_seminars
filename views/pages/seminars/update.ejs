@@ -48,7 +48,7 @@
           <label for="discount">Discount</label>
         </div>
         <div class="input-field col s6">
-          <input id="balance" type="number" class="validate" name="balance" value='<%= el.balance %>'>
+          <input disabled id="balance" type="number" class="validate" name="balance" value='<%= el.total - el.deposit - el.discount %>'>
           <label for="balance">Balance</label>
         </div>
       </div>

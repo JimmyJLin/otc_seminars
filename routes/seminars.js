@@ -9,7 +9,7 @@ module.exports = app => {
   });
 
   app.post('/seminars/attendees/update/:id', db.updateClassAttendeesByEmail, (req, res) => {
-    console.log('classId', res.classId.class_id);
+    // console.log('classId', res.classId.class_id);
     // const id = req.params.id;
     // console.log('id', id);
     res.redirect(`/seminars/class/` + res.classId.class_id);

@@ -1,6 +1,7 @@
 DROP TABLE if EXISTS Seminars CASCADE;
 DROP TABLE if EXISTS Class CASCADE;
 DROP TABLE if EXISTS Attendees CASCADE;
+DROP TABLE if EXISTS Students CASCADE;
 
 CREATE TABLE Seminars (
   id SERIAL PRIMARY KEY UNIQUE,
@@ -27,4 +28,12 @@ CREATE TABLE Attendees (
   deposit VARCHAR(500),
   balance VARCHAR(500),
   full_payment BOOLEAN
+);
+
+CREATE TABLE Students (
+  id SERIAL PRIMARY KEY UNIQUE,
+  first_name VARCHAR(500),
+  last_name VARCHAR(500),
+  email VARCHAR(500),
+  phone VARCHAR(500)
 );

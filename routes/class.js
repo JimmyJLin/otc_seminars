@@ -1,4 +1,3 @@
-const hsDb = require('../db/pgp/hairstrokes');
 const seminarDb = require('../db/pgp/seminar');
 
 module.exports = app => {

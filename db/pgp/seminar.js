@@ -41,9 +41,16 @@ function getOneClass(req, res, next) {
 
 // ADD ONE Attendee to class
 function addOneAttendee(req, res, next) {
-  db.none('INSERT INTO Attendees (class_id, first_name, last_name, email, phone, total, deposit, balance, full_payment) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9 )', [req.params.id, req.body.first_name, req.body.last_name, req.body.email, req.body.phone, req.body.total, req.body.deposit, req.body.balance, req.body.full_payment])
+  db.any('INSERT INTO Attendees (class_id, first_name, last_name, email, phone, total, deposit, balance, full_payment) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9 ) RETURNING email, first_name, last_name, phone', [req.params.id, req.body.first_name, req.body.last_name, req.body.email, req.body.phone, req.body.total, req.body.deposit, req.body.balance, req.body.full_payment])
     .then((data) => {
-      // console.log('New Attendee added', data);
+      // console.log('returning email', data[0]);
+      db.any('INSERT INTO Students (first_name, last_name, email, phone) SELECT $1, $2, $3, $4 WHERE NOT EXISTS (SELECT 1 FROM Students WHERE email = $3)', [req.body.first_name, req.body.last_name, req.body.email, req.body.phone])
+        .then((data) => {
+          console.log('added new studdent')
+        })
+        .catch((error) => {
+          console.error('error adding new Students', error);
+        });
       next();
     })
     .catch((error) => {

@@ -1,0 +1,83 @@
+<% layout('main') -%>
+
+<nav id="breadcrumb">
+  <div class="nav-wrapper container">
+    <div class="col s12">
+      <a href="/dashboard" class="breadcrumb">Dashboard</a>
+      <a href="/students" class="breadcrumb">Students</a>
+      <% profileData.forEach((el) => { %>
+        <a href='/students/<%= el.email %>' class="breadcrumb">Profile</a>
+      <% }) %>
+
+    </div>
+  </div>
+</nav>
+
+<div id="seminars" class="container">
+
+  <div class="fixed-action-btn horizontal">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">add</i>
+    </a>
+  </div>
+
+  <h4 class="center">Contact Information</h4>
+  <% profileData.forEach((el) => { %>
+    <div class="row">
+      <div class="col s6">
+        <label for="">First Name</label>
+        <h5><%= el.first_name %></h5>
+      </div>
+      <div class="col s6">
+        <label for="">Last Name</label>
+        <h5><%= el.last_name %></h5>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s6">
+        <label for="">Email</label>
+        <h5><%= el.email %></h5>
+      </div>
+      <div class="col s6">
+        <label for="">Phone</label>
+        <h5><%= el.phone %></h5>
+      </div>
+    </div>
+  <% }) %>
+
+  <h4 class="center">Seminar History</h4>
+
+  <table class="highlight">
+    <thead>
+      <tr>
+          <th>Type</th>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Fee</th>
+      </tr>
+    </thead>
+
+    <% if(studentHistory === undefined || studentHistory.length > 0) { %>
+      <% studentHistory.forEach((el) => { %>
+        <tbody>
+          <td><%= el.class_category %></td>
+          <td><%= el.class_type %></td>
+          <td><%= el.class_date %></td>
+          <td>$ <%= el.total %></td>
+        </tbody>
+      <% }) %>
+    <% } else { %>
+      <tbody>
+        <td></td>
+        <td class="center">No Seminar History</td>
+        <td></td>
+        <td></td>
+      </tbody>
+    <% } %>
+
+
+  </table>
+
+
+</div>

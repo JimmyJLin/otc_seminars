@@ -1,0 +1,49 @@
+<% layout('main') -%>
+
+<%- include ../../partials/seminars/utilities/breadcrumbs %>
+
+<div id="seminars" class="container">
+
+  <div class="fixed-action-btn horizontal">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">add</i>
+    </a>
+  </div>
+
+  <!-- partials -->
+  <h2>Current Students</h2>
+
+  <table class="highlight">
+    <thead>
+      <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Details</th>
+      </tr>
+    </thead>
+
+    <% if(studentData === undefined) { %>
+      <tbody>
+        <td></td>
+        <td class="center">Please add addditional seminars</td>
+        <td></td>
+      </tbody>
+    <% } else { %>
+      <% studentData.forEach((el) => { %>
+        <tbody>
+          <td><%= el.first_name %> <%= el.last_name %></td>
+          <td><%= el.email %></td>
+          <td><%= el.phone %></td>
+          <td>
+            <a href='/students/<%= el.email %>' name='<%= el.email %>'>
+              Detail Info
+            </a>
+          </td>
+        </tbody>
+        <% }) %>
+    <% } %>
+
+  </table>
+
+</div>

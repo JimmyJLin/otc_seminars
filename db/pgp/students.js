@@ -4,8 +4,7 @@ const db = require('./pgp');
 function getOneStudent(req, res, next) {
   db.any('SELECT * FROM Students where email = $1', [req.params.id])
     .then((data) => {
-      res.class = data;
-      // console.log('data');
+      res.profileData = data;
       next();
     })
     .catch((error) => {
@@ -40,6 +39,19 @@ function updateOneStudent(req, res, next) {
   });
 }
 
+// Get Student Class History
+function getStudentHistory(req, res, next) {
+  db.any('SELECT * FROM class, attendees WHERE class.id = attendees.class_id AND email = $1;', [req.params.id])
+    .then((data) => {
+      res.studentHistory = data;
+      next();
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
 module.exports.getOneStudent = getOneStudent;
 module.exports.getAllStudents = getAllStudents;
 module.exports.updateOneStudent = updateOneStudent;
+module.exports.getStudentHistory = getStudentHistory;

@@ -1,0 +1,30 @@
+<table class="highlight">
+  <thead>
+    <tr>
+        <th>Type</th>
+        <th>Date</th>
+        <th>Details</th>
+    </tr>
+  </thead>
+
+  <% if(classData === undefined) { %>
+    <tbody>
+      <td></td>
+      <td class="center">Please add addditional seminars</td>
+      <td></td>
+    </tbody>
+  <% } else { %>
+    <% classData.forEach((el) => { %>
+      <tbody>
+        <td><%= el.class_type %></td>
+        <td><%= el.class_date %></td>
+        <td>
+          <a href='/seminars/class/<%= el.id %>' name='<%= el.id %>'>
+            Detail Info
+          </a>
+        </td>
+      </tbody>
+      <% }) %>
+  <% } %>
+
+</table>

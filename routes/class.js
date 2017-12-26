@@ -4,13 +4,14 @@ const seminarDb = require('../db/pgp/seminar');
 module.exports = app => {
 
   // hairstrokes
-  app.get('/seminars/hairstrokes', hsDb.getAllHairstrokeSeminar, (req, res) => {
-    const data = res.rows
-    // console.log('data ', data.class);
-    res.render('pages/seminars/hairstrokes/hairstrokes', { data });
+  app.get('/seminars/:id', seminarDb.getAllSeminars, (req, res) => {
+    // console.log('para id: -----', req.params)
+    const classData = res.classData;
+    console.log('data ', classData);
+    res.render('pages/seminars/hairstrokes/hairstrokes', { classData });
   });
 
-  app.post('/seminars/hairstrokes', hsDb.allHairstrokeSeminar, (req, res) => {
+  app.post('/seminars/:id', seminarDb.addOneSeminar, (req, res) => {
     res.redirect('/seminars/hairstrokes');
   });
 
@@ -23,7 +24,7 @@ module.exports = app => {
   app.post('/seminars/class/:id', seminarDb.addOneAttendee, (req, res) => {
     const id = req.params.id;
     // console.log('req.body', req.body);
-    res.redirect('/seminars/hairstrokes/class/' + id);
+    res.redirect('/seminars/class/' + id);
   });
 
   app.post('/seminars/class/attendees/delete', seminarDb.deleteRecord, (req, res) => {

@@ -21,7 +21,8 @@ app.set('view engine', 'ejs');
 require('./routes/main')(app);
 require('./routes/dashboard')(app);
 require('./routes/seminars')(app);
-require('./routes/hairstrokes')(app);
+require('./routes/class')(app);
+require('./routes/hybrid')(app);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT);

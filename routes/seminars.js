@@ -1,10 +1,6 @@
 const db = require('../db/pgp/seminar');
 
 module.exports = app => {
-  /* api routes */
-  // app.get('/seminars', (req, res) => {
-  //   res.render('pages/seminars/seminars');
-  // });
 
   app.get('/seminars/attendees/update/:id', db.getClassAttendeesByEmail, (req, res) => {
     const attendeeDataByEmail = res.attendeeByEmail;
@@ -17,12 +13,6 @@ module.exports = app => {
     // const id = req.params.id;
     // console.log('id', id);
     res.redirect(`/seminars/class/` + res.classId.class_id);
-  });
-
-
-  // hybrid
-  app.get('/seminars/hybrid', (req, res) => {
-    res.render('pages/seminars/hybrid');
   });
 
 

@@ -8,7 +8,7 @@ module.exports = app => {
     // res.redirect('back');
   });
 
-  app.post('/seminars/attendees/update/:id', db.updateClassAttendeesByEmail, (req, res) => {
+  app.post('/seminars/attendees/update/:id', db.updateClassAttendees, (req, res) => {
     // console.log('classId', res.classId.class_id);
     // const id = req.params.id;
     // console.log('id', id);

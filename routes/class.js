@@ -16,7 +16,8 @@ module.exports = app => {
 
   app.get('/seminars/class/:id', seminarDb.getOneClass, seminarDb.getClassAttendees, (req, res) => {
     const classData = res.class;
-    const attendeeData = res.attendee;
+    const attendeeData = res.attendeeData;
+    console.log('attendeeData', attendeeData);
     res.render('pages/seminars/hairstrokes/class', { classData, attendeeData });
   });
 

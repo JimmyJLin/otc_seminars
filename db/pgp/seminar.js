@@ -62,7 +62,7 @@ function addOneAttendee(req, res, next) {
 function getClassAttendees(req, res, next) {
   db.any('SELECT * FROM Attendees where class_id = $1', [req.params.id])
     .then((data) => {
-      res.attendee = data;
+      res.attendeeData = data;
       // console.log('data');
       next();
     })
@@ -98,8 +98,9 @@ function getClassAttendeesByEmail(req, res, next) {
 }
 
 // UPDATE ONE attendee based on email and return class_id
-function updateClassAttendeesByEmail(req, res, next) {
-  db.any('UPDATE Attendees SET (first_name, last_name, email, phone, total, deposit, balance, payment, discount) = ($1, $2, $3, $4, $5, $6, $7, $8, $9) WHERE phone = $4 RETURNING class_id', [req.body.first_name, req.body.last_name, req.body.email, req.body.phone, req.body.total, req.body.deposit, req.body.balance, req.body.payment, req.body.email, req.body.discount])
+function updateClassAttendees(req, res, next) {
+  console.log("updateClassAttendees ---", req.body)
+  db.any('UPDATE Attendees SET (first_name, last_name, email, phone, total, deposit, balance, payment, discount) = ($1, $2, $3, $4, $5, $6, $7, $8, $9) WHERE phone = $4 RETURNING class_id', [req.body.first_name, req.body.last_name, req.body.email, req.body.phone, req.body.total, req.body.deposit, req.body.balance, req.body.payment, req.body.discount])
   .then((data) => {
     res.classId = data[0]
     // console.log(' Attendee Updated', data);
@@ -116,5 +117,5 @@ module.exports.deleteRecord = deleteRecord;
 module.exports.getClassAttendees = getClassAttendees;
 module.exports.addOneAttendee = addOneAttendee;
 module.exports.getOneClass = getOneClass;
-module.exports.updateClassAttendeesByEmail = updateClassAttendeesByEmail;
+module.exports.updateClassAttendees = updateClassAttendees;
 module.exports.getClassAttendeesByEmail = getClassAttendeesByEmail;

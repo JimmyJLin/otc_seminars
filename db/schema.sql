@@ -26,8 +26,11 @@ CREATE TABLE Attendees (
   phone VARCHAR(500),
   total VARCHAR(500),
   deposit VARCHAR(500),
+  discount VARCHAR(500),
   balance VARCHAR(500),
-  full_payment BOOLEAN
+  referral VARCHAR(500),
+  full_payment BOOLEAN,
+  notes VARCHAR(5000)
 );
 
 CREATE TABLE Students (

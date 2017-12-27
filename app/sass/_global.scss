@@ -2,7 +2,7 @@
 
 // Main basic stylings
 body {
-  
+
   #hidden_input{
     border-bottom: none;
     height: 0;
@@ -27,6 +27,16 @@ body {
 
   #breadcrumb{
     background-color: rgba(238, 110, 115, 0.7);
+  }
+
+  .divider{
+    display: block;
+    width: 30%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-bottom-style: solid;
+    border-color: rgba(238, 110, 115, 0.7);
   }
 
 }

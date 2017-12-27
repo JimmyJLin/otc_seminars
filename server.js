@@ -22,7 +22,6 @@ require('./routes/main')(app);
 require('./routes/dashboard')(app);
 require('./routes/seminars')(app);
 require('./routes/class')(app);
-require('./routes/hybrid')(app);
 require('./routes/students')(app);
 
 const PORT = process.env.PORT || 3000;

@@ -1,8 +1,10 @@
-<nav id="breadcrumb">
-  <div class="nav-wrapper container">
-    <div class="col s12">
-      <a href="/dashboard" class="breadcrumb">Dashboard</a>
-      <a href="/hairstrokes" class="breadcrumb">Hairstrokes</a>
+<% classData.forEach((el) => { %>
+  <nav id="breadcrumb">
+    <div class="nav-wrapper container">
+      <div class="col s12">
+        <a href="/dashboard" class="breadcrumb">Dashboard</a>
+        <a href="/<%= el.class_type %>" class="breadcrumb"><%= el.class_type %></a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+<% }) %>

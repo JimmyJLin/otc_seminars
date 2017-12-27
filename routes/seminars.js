@@ -6,7 +6,7 @@ module.exports = app => {
   app.get('/seminars/:id', seminarDb.getAllSeminars, (req, res) => {
     console.log('para id: -----', req.params.id)
     const classData = res.classData;
-    // console.log('data ', classData);
+    console.log('data ', classData);
     const getUrl = `pages/seminars/` + req.params.id + '/' + req.params.id;
     res.render(getUrl, { classData });
   });

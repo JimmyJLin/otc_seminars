@@ -48,8 +48,8 @@
           <label for="discount">Discount</label>
         </div>
         <div class="input-field col s6">
-          <input disabled id="balance" type="number" class="validate" name="balance" value='<%= el.total - el.deposit - el.discount %>'>
-          <label for="balance">Balance</label>
+          <input id="payment" type="number" class="validate" name="payment" value='<%= el.payment %>'>
+          <label for="payment">Payment</label>
         </div>
       </div>
 
@@ -59,22 +59,17 @@
           <label for="referral">Referred by</label>
         </div>
         <div class="input-field col s6">
-          <select name="payment">
-            <option value="" disabled selected>Choose your option</option>
-            <option value="t">
-              YES</option>
-              <option value="f">NO</option>
-            </select>
-            <label>Full Payment</label>
-          </div>
+          <input disabled id="balance" type="number" class="validate" name="balance" value='<%= el.total - el.deposit - el.discount - el.payment %>'>
+          <label for="balance">Balance</label>
         </div>
+      </div>
 
-        <div class="row">
-          <div class="input-field col s12">
-            <textarea id="notes" class="materialize-textarea" value='<%= el.notes %>'><%= el.notes %></textarea>
-            <label for="notes">Notes</label>
-          </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="notes" class="materialize-textarea" value='<%= el.notes %>'><%= el.notes %></textarea>
+          <label for="notes">Notes</label>
         </div>
+      </div>
 
       <button class="btn waves-effect waves-light modal-close right" type="submit">Update
         <i class="material-icons right">send</i>

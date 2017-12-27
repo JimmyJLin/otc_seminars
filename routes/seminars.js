@@ -1,54 +1,18 @@
-const db = require('../db/pgp/seminar');
+const seminarDb = require('../db/pgp/seminar');
 
 module.exports = app => {
 
-  app.get('/seminars/attendees/update/:id', db.getClassAttendeesByEmail, (req, res) => {
-    const attendeeDataByEmail = res.attendeeByEmail;
-    res.render('pages/seminars/update', { attendeeDataByEmail });
-    // res.redirect('back');
+  // Seminar Routes
+  app.get('/seminars/:id', seminarDb.getAllSeminars, (req, res) => {
+    console.log('para id: -----', req.params.id)
+    const classData = res.classData;
+    // console.log('data ', classData);
+    const getUrl = `pages/seminars/` + req.params.id + '/' + req.params.id;
+    res.render(getUrl, { classData });
   });
-
-  app.post('/seminars/attendees/update/:id', db.updateClassAttendees, (req, res) => {
-    // console.log('classId', res.classId.class_id);
-    // const id = req.params.id;
-    // console.log('id', id);
-    res.redirect(`/seminars/class/` + res.classId.class_id);
-  });
-
-
-  // powdered
-  app.get('/seminars/powdered', (req, res) => {
-    res.render('pages/seminars/powdered');
-  });
-
-
-  // lips
-  app.get('/seminars/lips', (req, res) => {
-    res.render('pages/seminars/lips');
-  });
-
-
-  // eyeliners
-  app.get('/seminars/eyeliners', (req, res) => {
-    res.render('pages/seminars/eyeliners');
-  });
-
-
-  // areola
-  app.get('/seminars/areola', (req, res) => {
-    res.render('pages/seminars/areola');
-  });
-
-
-  // hairline
-  app.get('/seminars/hairline', (req, res) => {
-    res.render('pages/seminars/hairline');
-  });
-
-
-  // others
-  app.get('/seminars/others', (req, res) => {
-    res.render('pages/seminars/others');
+  app.post('/seminars/:id', seminarDb.addOneSeminar, (req, res) => {
+    const postUrl = `/seminars/` + req.params.id;
+    res.redirect(postUrl);
   });
 
 

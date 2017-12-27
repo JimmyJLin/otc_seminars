@@ -98,15 +98,9 @@ function getClassAttendeesByEmail(req, res, next) {
 }
 
 // UPDATE ONE attendee based on email and return class_id
-<<<<<<< HEAD
-function updateClassAttendeesByEmail(req, res, next) {
-  console.log('upate info', req.body);
-  db.any('UPDATE Attendees SET (first_name, last_name, email, phone, total, deposit, discount, balance, payment, referral) = ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) WHERE phone = $4 RETURNING class_id', [req.body.first_name, req.body.last_name, req.body.email, req.body.phone, req.body.total, req.body.deposit, req.body.discount, req.body.balance, req.body.payment, req.body.referral])
-=======
 function updateClassAttendees(req, res, next) {
   console.log("updateClassAttendees ---", req.body)
   db.any('UPDATE Attendees SET (first_name, last_name, email, phone, total, deposit, balance, payment, discount) = ($1, $2, $3, $4, $5, $6, $7, $8, $9) WHERE phone = $4 RETURNING class_id', [req.body.first_name, req.body.last_name, req.body.email, req.body.phone, req.body.total, req.body.deposit, req.body.balance, req.body.payment, req.body.discount])
->>>>>>> master
   .then((data) => {
     res.classId = data[0]
     // console.log(' Attendee Updated', data);

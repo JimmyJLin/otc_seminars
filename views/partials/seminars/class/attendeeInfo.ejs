@@ -1,3 +1,4 @@
+
 <table class="highlight responsive-table">
   <thead>
     <tr>
@@ -13,6 +14,20 @@
     </tr>
   </thead>
   <% attendeeData.forEach((el) => { %>
+    <div id="deleteModal" class="modal">
+      <div class="modal-content">
+        <h4 class="center">Confirm to Delete Seminar Attendee </h4>
+        <h4 id="modalPaddings" class="red lighten-2 white-text center"><%= el.first_name %> <%= el.last_name  %></h4>
+
+        <div class="row center">
+          <form action="/seminars/class/attendees/delete" method="post">
+            <input type="hidden" value='<%= el.phone %>' name="phone">
+            <button class="waves-effect btn waves-light red" type="submit"><i class="material-icons center">delete</i></button>
+          </form>
+        </div>
+
+      </div>
+    </div>
     <tbody>
       <td><%= el.first_name %> <%= el.last_name  %></td>
       <td><%= el.email %></td>
@@ -22,22 +37,11 @@
       <td>$ <%= el.discount %></td>
       <td>$ <%= el.payment %></td>
       <td>$ <%= el.total - el.deposit - el.discount - el.payment %></td>
-
-      <!-- <% if (el.full_payment === false || el.full_payment === null) { %>
-        <td> NO </td>
-      <% } else { %>
-        <td> YES </td>
-      <% } %> -->
       <td>
-        <div id="action_buttons" class="row">
-
-          <form action="/seminars/class/attendees/delete" method="post">
-            <input type="hidden" value='<%= el.phone %>' name="phone">
-            <button class="waves-effect btn waves-light red" type="submit"><i class="material-icons center">delete</i></button>
-          </form>
+        <div class="row">
+          <a id="action_buttons" class="waves-effect btn waves-light red modal-trigger" href='#deleteModal'><i class="material-icons center">update</i></a>
 
           <a class="waves-effect btn waves-light" href='/seminars/attendees/update/<%= el.phone %>'><i class="material-icons center">update</i></a>
-
 
         </div>
       </td>

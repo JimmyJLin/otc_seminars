@@ -15,52 +15,48 @@
     </tbody>
   <% } else { %>
     <% classData.forEach((el) => { %>
+      <div id="deleteClass" class="modal">
+        <div class="modal-content">
+          <h4 class="center">Confirm to Delete Seminar </h4>
+          <h4 id="modalPaddings" class="red lighten-2 white-text center"><%= el.class_type %></h4>
+          <div class="row center">
+            <form action='/seminars/class/delete/<%= el.id %>' method="post">
+              <input type="hidden" value='<%= el.id %>' name="id">
+              <button class="waves-effect btn waves-light red" type="submit"><i class="material-icons center">delete</i><%= el.id %></button>
+            </form>
+          </div>
+        </div>
+      </div>
+
       <tbody>
         <td>
-          <% switch ( el.class_type ) {
-            case "handcraft_3days": %>
-              Handcraft 3 Days Seminar
-              <% break;
-            case "handcraft_5days": %>
-              Handcraft 5 Days Seminar
-              <% break;
-            case "machine_3days": %>
-              Machine 3 Days Seminar
-              <% break;
-            case "machine_5days": %>
-              Machine 5 Days Seminar
-              <% break;
-            case "6D_Hybrid": %>
-              6D Hybrid 5 Days Seminar
-              <% break;
-            case "powdered": %>
-              Advanced Powdered
-              <% break;
-            case "lips": %>
-              Advanced Lips
-              <% break;
-            case "eyeliners": %>
-              Advanced Eyeliners
-              <% break;
-            case "areola": %>
-              Advanced Areola
-              <% break;
-            case "hairline": %>
-              Advanced Hairline
-              <% break;
-            case "others": %>
-              Others
-              <% break;
-            default: %>
-              No Seminar
-              <% break;
-           } %>
-
-          <!-- <%= el.class_type %> -->
+          <%- include ./classSwitch %>
         </td>
         <td><%= el.class_date %></td>
         <td>
-          <a class="waves-effect btn waves-light" href='/seminars/class/<%= el.id %>'><i class="material-icons center">dashboard</i></a>
+          <div id="action_buttons" class="row center">
+
+            <!-- <div id="deleteClass" class="modal">
+              <div class="modal-content">
+                <h4 class="center">Confirm to Delete Seminar </h4>
+                <h4 id="modalPaddings" class="red lighten-2 white-text center"><%= el.class_type %></h4>
+                <div class="row center">
+                  <form action='/seminars/class/delete/<%= el.id %>' method="post">
+                    <input type="hidden" value='<%= el.id %>' name="id">
+                    <button class="waves-effect btn waves-light red" type="submit"><i class="material-icons center">delete</i><%= el.id %></button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <a class="waves-effect btn waves-light red modal-trigger" href='#deleteClass'><i class="material-icons center">delete</i></a> -->
+
+            <form action='/seminars/class/delete/<%= el.id %>' method="post">
+              <input type="hidden" value='<%= el.id %>' name="id">
+              <button class="waves-effect btn waves-light red" type="submit"><i class="material-icons center">delete</i></button>
+            </form>
+
+            <a class="waves-effect btn waves-light" href='/seminars/class/<%= el.id %>'><i class="material-icons center">dashboard</i></a>
+          </div>
         </td>
       </tbody>
       <% }) %>

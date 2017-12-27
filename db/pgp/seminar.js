@@ -16,6 +16,7 @@ function getAllSeminars(req, res, next) {
 
 // ADD ONE seminar.
 function addOneSeminar(req, res, next) {
+  console.log('data ----', req.bod);
   db.none('INSERT INTO Class (class_category, class_type, class_date, class_attendee, class_completed) VALUES ($1, $2, $3, $4, $5);', [req.params.id, req.body.seminar, req.body.date, 0, false])
     .then((data) => {
       // console.log('New Seminar Added', data);
@@ -23,6 +24,19 @@ function addOneSeminar(req, res, next) {
     })
     .catch(() => {
       console.error('error adding new seminar to Hairstrokes');
+    });
+}
+
+// DELETE ONE seminars
+function deleteOneSeminar(req, res, next) {
+  console.log('req.params.id', req.params.id);
+  db.any('DELETE FROM Class where id = $1', [req.body.id])
+    .then((data) => {
+      // console.log('deleted attendee', data);
+      next();
+    })
+    .catch((error) => {
+      console.error('error deleting attendee', error);
     });
 }
 
@@ -113,6 +127,7 @@ function updateClassAttendees(req, res, next) {
 
 module.exports.getAllSeminars = getAllSeminars;
 module.exports.addOneSeminar = addOneSeminar;
+module.exports.deleteOneSeminar = deleteOneSeminar;
 module.exports.deleteRecord = deleteRecord;
 module.exports.getClassAttendees = getClassAttendees;
 module.exports.addOneAttendee = addOneAttendee;

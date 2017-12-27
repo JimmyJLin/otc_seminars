@@ -14,6 +14,10 @@ module.exports = app => {
     const postUrl = `/seminars/` + req.params.id;
     res.redirect(postUrl);
   });
+  app.post('/seminars/class/delete/:id', seminarDb.deleteOneSeminar, (req, res) => {
+    // const postUrl = `/seminars/` + req.params.id;
+    res.redirect('back');
+  });
 
 
 };

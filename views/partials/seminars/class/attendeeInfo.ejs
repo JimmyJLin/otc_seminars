@@ -22,7 +22,7 @@
         <div class="row center">
           <form action="/seminars/class/attendees/delete" method="post">
             <input type="hidden" value='<%= el.phone %>' name="phone">
-            <button class="waves-effect btn waves-light red" type="submit"><i class="material-icons center">delete</i></button>
+            <button class="waves-effect btn waves-light red" type="submit"><i class="material-icons center">delete</i><%= el.phone %></button>
           </form>
         </div>
 
@@ -38,8 +38,13 @@
       <td>$ <%= el.payment %></td>
       <td>$ <%= el.total - el.deposit - el.discount - el.payment %></td>
       <td>
-        <div class="row">
-          <a id="action_buttons" class="waves-effect btn waves-light red modal-trigger" href='#deleteModal'><i class="material-icons center">delete</i></a>
+        <div id="action_buttons" class="row">
+          <form action="/seminars/class/attendees/delete" method="post">
+            <input type="hidden" value='<%= el.phone %>' name="phone">
+            <button class="waves-effect btn waves-light red" type="submit"><i class="material-icons center">delete</i></button>
+          </form>
+
+          <!-- <a id="action_buttons" class="waves-effect btn waves-light red modal-trigger" href='#deleteModal'><i class="material-icons center">delete</i></a> -->
 
           <a class="waves-effect btn waves-light" href='/seminars/attendees/update/<%= el.phone %>'><i class="material-icons center">update</i></a>
 

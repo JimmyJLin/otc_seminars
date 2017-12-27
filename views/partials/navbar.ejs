@@ -1,10 +1,27 @@
 <div id="nav_bar">
+  <!-- Dropdown Structure -->
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="/students">Students</a></li>
+    <li><a class="active" href="/seminars/hairstrokes">Hair Strokes</a></li>
+    <li><a href="/seminars/hybrid">Hybrid</a></li>
+    <li><a href="/seminars/powdered">Powdered</a></li>
+    <li><a href="/seminars/lips">Lips</a></li>
+    <li><a href="/seminars/eyeliners">Eyeliners</a></li>
+    <li><a href="/seminars/areola">Areola</a></li>
+    <li><a href="/seminars/hairline">Hairline</a></li>
+    <li><a href="/seminars/others">Others</a></li>
+  </ul>
+
   <nav>
     <div class="nav-wrapper container">
       <a href="/" class="brand-logo">OTC</a>
       <a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="/dashboard">Dashboard</a></li>
+
+        <!-- Dropdown Trigger -->
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Menus<i class="material-icons right">arrow_drop_down</i></a></li>
+
         <li>
           <a href="/" class="waves-effect waves-light btn">Log Out</a>
         </li>
